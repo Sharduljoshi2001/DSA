@@ -31,7 +31,7 @@ void explainMultiSet()
          << endl;
     // if we have to erase an element{lets say 1(has multiple occurances)}
     // it will erase all the 1's that are present in the multiset
-    ms.erase(1);
+    // ms.erase(1);
     cout<<"After Erasing 1's: "<<endl;
     for (auto it : ms)
     {
@@ -39,6 +39,13 @@ void explainMultiSet()
     }
     cout << endl
          << endl;
+    // if you want to delete only single 1, we can acheive it by
+    ms.erase(ms.find(1));
+        for (auto it : ms)
+    {
+        cout << it << endl;
+    }
+
 }
 int main()
 {
