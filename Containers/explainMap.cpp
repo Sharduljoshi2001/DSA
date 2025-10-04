@@ -22,17 +22,18 @@ void explainMap()
     {
         cout << "Roll No: " << it.first << " Name: " << it.second << endl;
     }
-
+    cout << endl;
     // find(key) → iterator return karta hai us key par (agar mila to), else end()
     auto it = mp.find(3);
     cout << "R.No: " << (*it).first << " Name: " << (*it).second << endl;
-
+    cout << endl;
     // if i find the key-value pair that isn't present
     auto it2 = mp.find(4);
     if (it2 == mp.end()) // Fixed: using it2 instead of it
     {
         cout << "Key 4 not found!" << endl;
     }
+    cout << endl;
     /*
     lower_bound(key)
 
@@ -55,6 +56,7 @@ void explainMap()
     */
     auto it4 = mp.upper_bound(1);
     cout << "Upperbound key: " << (*it4).first << " & it's value: " << (*it4).second << endl;
+    cout << endl;
 }
 
 void explainUnorderedMap()
@@ -65,7 +67,7 @@ void explainUnorderedMap()
 
         map ke andar elements sorted order (ascending key) mein store hote hain.
 
-        unordered_map ke andar elements unsorted (random order) mein store hote hain kyunki 
+        unordered_map ke andar elements unsorted (random order) mein store hote hain kyunki
         ye internally hashing use karta hai.
 
         Matlab: unordered_map ka focus fast access hai, order maintain karna nahi.
@@ -78,23 +80,23 @@ void explainUnorderedMap()
 
         No order → elements kis order mein print honge, ye guaranteed nahi hai.
     */
-   unordered_map<int,string>ump;
+    unordered_map<int, string> ump;
     ump[1] = "Rob";
     ump[2] = "Om";
-    ump.emplace(3, "Guy");
-    ump.insert({4,"bob"});
-    cout<<"Printing Map: "<<endl;
-    //Neche Printed Elements ka Order random hai (not sorted).
-    for(auto it:ump){
-        cout<<"Roll No: "<<it.first <<" Name: "<<it.second<<endl;
+    ump.emplace(3, "Guy"); // constructs key-value pair in place
+    ump.insert({4, "bob"});
+    cout << "Printing Map: " << endl;
+    // Neche Printed Elements ka Order random hai (not sorted).
+    for (auto it : ump)
+    {
+        cout << "Roll No: " << it.first << " Name: " << it.second << endl;
     }
-
-
+    cout << endl;
 }
 
 int main()
 {
-    explainMap();
+    // explainMap();
     explainUnorderedMap();
     return 0;
 }
