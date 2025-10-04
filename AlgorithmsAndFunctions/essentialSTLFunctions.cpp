@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <numeric>
+#include <utility>
 using namespace std;
 void explainSort()
 {
@@ -188,9 +189,15 @@ void explainPow()
 }
 
 // Comparator function below
-bool compare(int x, int y)
+bool compare(pair<int, int> el1, pair<int, int> el2)
 {
-    return x > y;  // Fixed: use x and y instead of undefined a and b
+    if (el1.second > el2.second)
+        return true;
+    if (el1.second < el2.second)
+        return false;
+    if (el1.first < el2.first)
+        return true;
+    return false;
 }
 
 void explainComparator()
@@ -199,26 +206,52 @@ void explainComparator()
         A comparator is a custom function or functor that decides how to compare
         two elements when sorting or ordering in containers like sort(), set, map,
         or priority_queue.
-        
+
         return x > y;  // Descending order (5,4,3,2,1)
         return x < y;  // Ascending order (1,2,3,4,5) - same as default
     */
     int arr[] = {1, 3, 2, 5, 4};
     int size = sizeof(arr) / sizeof(arr[0]);
-    
+
     cout << "Before sorting:" << endl;
     for (int i = 0; i < size; i++)
     {
         cout << arr[i] << " ";
     }
-    cout << endl;
-    
-    sort(arr, arr + size, compare);
-    
-    cout << "After sorting (descending):" << endl;
-    for (int i = 0; i < size; i++)
+    cout << endl<<endl;
+
+    // sort(arr, arr + size, compare);
+
+    // cout << "After sorting (descending):" << endl;
+    // for (int i = 0; i < size; i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
+    // cout << endl;
+
+    // Array of pairs
+    pair<int, int> pairArr[] = {{1, 6},
+                                {1, 5},
+                                {2, 6},
+                                {2, 9},
+                                {3, 9}};
+
+    int pairSize = sizeof(pairArr) / sizeof(pairArr[0]);
+
+    cout << "Before sorting pairs:" << endl;
+    for (int i = 0; i < pairSize; i++)
     {
-        cout << arr[i] << " ";
+        cout << "{" << pairArr[i].first << ", " << pairArr[i].second << "} ";
+    }
+    cout << endl;
+    // sort it according to the second element
+    //{2,9} {3,9} {1,6} {2,6} {1,5}
+    sort(pairArr, pairArr + pairSize, compare);
+
+    cout << "After sorting pairs:" << endl;
+    for (int i = 0; i < pairSize; i++)
+    {
+        cout << "{" << pairArr[i].first << ", " << pairArr[i].second << "} ";
     }
     cout << endl;
 }
