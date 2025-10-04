@@ -218,7 +218,8 @@ void explainComparator()
     {
         cout << arr[i] << " ";
     }
-    cout << endl<<endl;
+    cout << endl
+         << endl;
 
     // sort(arr, arr + size, compare);
 
